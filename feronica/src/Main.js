@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Card from './components/Card/Card';
 import Input from './components/Input/Input';
+import Header from './components/Header/Header';
 import './css/bootstrap.min.css';
+
 
 //LATIHAN 5.10
 export default class Main extends Component{
@@ -13,10 +15,13 @@ export default class Main extends Component{
         }
     }
 
+    
     render(){
         return(
             <div>
+                <Header />
                 <h2 style={{width: '550px', margin:'auto', textAlign: 'center', color:'#4d90fe'}}>
+                    
                     Sistem Informasi E-biz
                 </h2>
                 <Input getValues={(name,value)=> this.setState({[name] : value})}/>
