@@ -1,51 +1,73 @@
 import React, { Component } from 'react';
-import './css/bootstrap.min.css';
-import './App.css';
-import logo from './logo.svg';
-import Home from './views/Home/Home';
-import About from './views/About/About';
-import Help from './views/Help/Help';
+import{
+  BrowserRouter as Router,
+  Route,
+  Link, Switch
+} from "react-router-dom";
 
-//LATIHAN 5.6
 class App extends Component{
-  constructor(){
-    super();
-    //inisial state view
-    this.state={
-      view:'home'
-    }
-  }
   render(){
-    //Functional component View untuk mengatur component yang tampil
-    const View = ()=>{
-      if(this.state.view =='home')
-        return <Home name="Eden Hazard" />
-      else if(this.state.view =='about')
-        return <About />
-      else if(this.state.view == 'help')
-        return <Help />
-    }
     return(
-      <div>
-        <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a onClick={()=> this.setState({view : 'home'})} className="nav-link" href="#">Home</a>
-            </li>
-            <li className="nav-item">
-              <a onClick={()=> this.setState({view : 'about'})} className="nav-link" href="#">About</a>
-            </li>
-            <li className="nav-item">
-              <a onClick={()=> this.setState({view : 'help'})} className="nav-link" href="#">Help</a>
-            </li>
+      <Router>
+        <div>
+          <ul style={{listStyle: 'none'}}>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/news'>News</Link></li>
           </ul>
-        </nav>
-        <View />
-      </div>
+
+          <Switch>
+            <Route path='/' exact render={()=><div>Ini adalah halaman Home</div>} />
+            <Route path='/news' render={()=><div>Ini adalah halaman News</div>} />
+          </Switch>
+
+        </div>
+      </Router>
     )
   }
 }
 
+export default App;
+
+//LATIHAN 5.6
+// class App extends Component{
+//   constructor(){
+//     super();
+//     //inisial state view
+//     this.state={
+//       view:'home'
+//     }
+//   }
+//   render(){
+//     //Functional component View untuk mengatur component yang tampil
+//     const View = ()=>{
+//       if(this.state.view =='home')
+//         return <Home name="Eden Hazard" />
+//       else if(this.state.view =='about')
+//         return <About />
+//       else if(this.state.view == 'help')
+//         return <Help />
+//     }
+//     return(
+//       <div>
+//         <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+//           <ul className="navbar-nav">
+//             <li className="nav-item">
+//               <a onClick={()=> this.setState({view : 'home'})} className="nav-link" href="#">Home</a>
+//             </li>
+//             <li className="nav-item">
+//               <a onClick={()=> this.setState({view : 'about'})} className="nav-link" href="#">About</a>
+//             </li>
+//             <li className="nav-item">
+//               <a onClick={()=> this.setState({view : 'help'})} className="nav-link" href="#">Help</a>
+//             </li>
+//           </ul>
+//         </nav>
+//         <View />
+//       </div>
+//     )
+//   }
+// }
+// export default App
 
 //LATIHAN 5.5
 // function Message(props){
@@ -136,5 +158,5 @@ class App extends Component{
 // }
 
 
-export default App
+
 
