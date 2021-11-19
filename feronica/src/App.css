@@ -53,3 +53,14 @@
   font-size: 14px;
   color: #888;
 }
+
+.navbar{
+  background-color:paleturquoise;
+  color:black;
+}
+
+.foto{
+  text-align:center;
+  width:150px;
+  height:200px;
+}
