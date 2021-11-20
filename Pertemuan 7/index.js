@@ -1,12 +1,18 @@
-
-//latihan 7.1
+//latihan 7.2
 var http = require('http');
 
-//create a server object 
 http.createServer((req, res)=>{
-  res.write('<p>Pengembangan Aplikasi Web dengan Nodejs</p>');
-//write a response to the client 
-  res.end(); //end the response
+  if (req.url=='/home')
+    res.write('<p>Konten Home</p>')
+  else if (req.url=='/product')
+    res.write('<p>Konten Product</p>')
+  else if (req.url=='/order')
+    res.write('<p>Konten Order</p>')
+  else if (req.url=='/')
+    res.write('<p>Pengembangan Aplikasi Web dengan Nodejs</p>')
+  else
+    res.write('<h1>404</h1>')
+  res.end();
 }).listen(8000, ()=>{
   console.log('Server is running on port 8000')
-}) //the server object listens on port 8000
+});
